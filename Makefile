@@ -1,27 +1,40 @@
-#
-#  To sa opcje dla kompilacji
-#
-CPPFLAGS= -c -g -Iinc -Wall -pedantic
 
-__start__: uklad_rownan
-	./uklad_rownan
+TRGDIR=./
+OBJ=./obj
+FLAGS= -Wall -pedantic -std=c++14 -iquote inc
 
-uklad_rownan: obj/main.o obj/UkladRownanLiniowych.o obj/Macierz.o obj/Wektor.o
-	g++ -Wall -pedantic -o uklad_rownan obj/main.o obj/Wektor.o\
-                                   obj/Macierz.o obj/UkladRownanLiniowych.o
+__start__: ${TRGDIR}/test_arytm_zesp
+	${TRGDIR}/test_arytm_zesp  latwy
 
-obj/main.o: src/main.cpp inc/UkladRownanLiniowych.hh inc/Macierz.hh inc/Wektor.hh\
-        inc/rozmiar.h
-	g++ ${CPPFLAGS} -o obj/main.o src/main.cpp
+${TRGDIR}/test_arytm_zesp: ${OBJ} ${OBJ}/main.o ${OBJ}/LZespolona.o\
+                     ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o ${OBJ}/BazaTestu.o
+	g++ -o ${TRGDIR}/test_arytm_zesp ${OBJ}/main.o ${OBJ}/LZespolona.o\
+                     ${OBJ}/WyrazenieZesp.o ${OBJ}/BazaTestu.o
 
-obj/UkladRownanLiniowych.o: src/UkladRownanLiniowych.cpp inc/UkladRownanLiniowych.hh
-	g++ ${CPPFLAGS} -o obj/UkladRownanLiniowych.o src/UkladRownanLiniowych.cpp
+${OBJ}:
+	mkdir ${OBJ}
 
-obj/Macierz.o: src/Macierz.cpp inc/Macierz.hh 
-	g++ ${CPPFLAGS} -o obj/Macierz.o src/Macierz.cpp
+${OBJ}/main.o: src/main.cpp inc/LZespolona.hh inc/BazaTestu.hh
+	g++ -c ${FLAGS} -o ${OBJ}/main.o src/main.cpp
 
-obj/Wektor.o: src/Wektor.cpp inc/Wektor.hh inc/rozmiar.h
-	g++ ${CPPFLAGS} -o obj/Wektor.o src/Wektor.cpp
+${OBJ}/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh
+	g++ -c ${FLAGS} -o ${OBJ}/LZespolona.o src/LZespolona.cpp
 
-clean:
-	rm -f obj/*.o uklad_rownan
+${OBJ}/BazaTestu.o: src/BazaTestu.cpp inc/BazaTestu.hh inc/WyrazenieZesp.hh\
+                       inc/LZespolona.hh
+	g++ -c ${FLAGS} -o ${OBJ}/BazaTestu.o src/BazaTestu.cpp
+
+${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
+                       inc/LZespolona.hh
+	g++ -c ${FLAGS} -o ${OBJ}/WyrazenieZesp.o src/WyrazenieZesp.cpp
+
+${OBJ}/BazaTestu.o: src/BazaTestu.cpp inc/BazaTestu.hh inc/WyrazenieZesp.hh\
+                       inc/LZespolona.hh
+	g++ -c ${FLAGS} -o ${OBJ}/BazaTestu.o src/BazaTestu.cpp
+
+
+
+
+
+clear:
+	rm -f ${TRGDIR}/test_arytm_zesp ${OBJ}/*
