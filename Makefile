@@ -1,4 +1,4 @@
-//w budowie
+//w budowiee
 TRGDIR=./
 OBJ=./obj
 FLAGS= -Wall -pedantic -std=c++14 -iquote inc
