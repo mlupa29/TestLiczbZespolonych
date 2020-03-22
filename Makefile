@@ -1,4 +1,4 @@
-
+#cos jeszcze nie dziala 
 TRGDIR=./
 OBJ=./obj
 FLAGS= -Wall -pedantic -std=c++14 -iquote inc
