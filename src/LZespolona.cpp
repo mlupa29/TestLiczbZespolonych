@@ -8,7 +8,7 @@ void Wyswietl(LZespolona Skl1)
     cout << "(" << Skl1.re << showpos << Skl1.im << noshowpos << "i)";
 
 }
-//funkcja wczytujaca wyrazenie zespolone
+//funkcja wczytujaca liczbe zespolona
 void Wczytaj(LZespolona& Skl1)
 {
     char tab[3];
@@ -27,7 +27,7 @@ void Wczytaj(LZespolona& Skl1)
 
 }
 
-//funkcja wyswietlajaca wyrazenie zespolone
+//funkcja wyswietlajaca liczbe zespolona
 ostream& operator << (ostream& wyj, LZespolona Skl1)
 {
     wyj << "(" << Skl1.re << showpos << Skl1.im << noshowpos << "i)";
@@ -48,7 +48,7 @@ bool operator == (LZespolona Skl1, LZespolona Skl2)
 
 }
 
-//funkcja wczytujaca od uzytkownika wyrazenie zespolone i sprawdzajaca jej poprawnosc wpisania
+//funkcja wczytujaca od uzytkownika liczbe zespolona i sprawdzajaca jej poprawnosc wpisania
 istream& operator >> (istream& wej, LZespolona& Skl1)
 {
     char tab[3];
@@ -68,9 +68,9 @@ istream& operator >> (istream& wej, LZespolona& Skl1)
 }
 
 
-LZespolona Sprzezenie(LZespolona x)
+void Sprzezenie(LZespolona *x)
 {
-    return  -x;
+    x->im = -x->im;
 }
 
 /*!

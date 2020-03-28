@@ -24,7 +24,7 @@ struct  LZespolona {
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow
  */
 double Modul2(LZespolona Skl1);
-LZespolona Sprzezenie(LZespolona x);
+void Sprzezenie(LZespolona *x);
 
 bool operator == (LZespolona Skl1, LZespolona Skl2);
 

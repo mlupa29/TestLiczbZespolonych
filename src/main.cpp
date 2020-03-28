@@ -43,9 +43,9 @@ int main(int argc, char** argv)
 
         for (int i = 0; i < 3; )
         {
-
-            cin.sync();
-            cin.clear();
+            cin.ignore();
+            //cin.sync();
+            //cin.clear();
             std::cout << ":? Podaj wynik operacji:" << WyrZ_PytanieTestowe << "=" << endl;
             std::cout << "Twoja odpowiedz: ";
             std::cin >> wynik;
@@ -60,19 +60,19 @@ int main(int argc, char** argv)
             {
                 break;
             }
-            //cin.ignore();
-            cin.sync();
-            cin.clear();
+            cin.ignore();
+           // cin.sync();
+           // cin.clear();
         }
         if (wynik == Oblicz(WyrZ_PytanieTestowe))
         {
             std::cout << ":) Odpowiedz poprawna" << endl;
-            stat.poprawne++;
+            Dodaj_d(stat);
         }
         else
         {
             std::cout << ":( Blad. Prawidlowym wynikiem jest: " << Oblicz(WyrZ_PytanieTestowe) << endl;
-            stat.bledne++;
+            Dodaj_z(stat);
         }
 
     }
@@ -81,6 +81,9 @@ int main(int argc, char** argv)
     cout << endl;
     cout << " Koniec testu" << endl;
     cout << endl;
-    stat.procent = (stat.poprawne * 100.0) / (stat.bledne + stat.poprawne);
-    Wypisz(stat);
+    cout << "Ilosc dobrych odpowiedzi: " << Ile_Dobrych(stat) << endl;
+    cout << "Ilosc blednych odpowiedzi: " << Suma(stat)- Ile_Dobrych(stat) << endl;
+    cout << "Wynik procentowy poprawnych odpowiedzi: " << Procent(stat) << "%" <<endl;
+    Zeruj(stat);
+   // Wypisz(stat);
 }
