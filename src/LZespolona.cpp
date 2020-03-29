@@ -70,7 +70,8 @@ istream& operator >> (istream& wej, LZespolona& Skl1)
 
 LZespolona Sprzezenie(LZespolona x)
 {
-   return  x->im = -x->im;
+     x.im = -x.im;
+     return x;
 }
 
 /*!
