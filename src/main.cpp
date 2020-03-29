@@ -43,6 +43,7 @@ int main(int argc, char** argv)
 
         for (int i = 0; i < 3; )
         {
+            //dziala mi na win cmd z cin.sync i clear a dla ignore w panamint nie wyswietla pytan
             cin.ignore();
             //cin.sync();
             //cin.clear();
@@ -60,6 +61,7 @@ int main(int argc, char** argv)
             {
                 break;
             }
+            //dziala mi na win cmd z cin.sync i clear a dla ignore w panamint nie wyswietla pytan
             cin.ignore();
            // cin.sync();
            // cin.clear();

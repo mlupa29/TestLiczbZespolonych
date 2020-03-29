@@ -68,9 +68,9 @@ istream& operator >> (istream& wej, LZespolona& Skl1)
 }
 
 
-void Sprzezenie(LZespolona *x)
+LZespolona Sprzezenie(LZespolona x)
 {
-    x->im = -x->im;
+   return  x->im = -x->im;
 }
 
 /*!
